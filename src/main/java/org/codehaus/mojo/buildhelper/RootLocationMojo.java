@@ -4,6 +4,7 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 /**
  * This goal will get the location of the root folder within a multi module build as a property {@code rootlocation}.
@@ -11,7 +12,7 @@ import org.apache.maven.plugins.annotations.Parameter;
  * @author Karl Heinz Marbaise
  * @since 3.0.0
  */
-@Mojo( name = "rootlocation", defaultPhase = LifecyclePhase.VALIDATE, threadSafe = true )
+@Mojo( name = "root-location", defaultPhase = LifecyclePhase.VALIDATE, threadSafe = true )
 public class RootLocationMojo
     extends AbstractDefinePropertyMojo
 {
@@ -38,12 +39,29 @@ public class RootLocationMojo
     {
         if ( runOnlyAtExecutionRoot && !getProject().isExecutionRoot() )
         {
-            getLog().info( "Skip getting the rootlocation in this project because it's not the Execution Root" );
+            getLog().info( "Skip getting the root-location in this project because it's not the Execution Root" );
         }
         else
         {
-            defineProperty( rootLocationProperty, session.getTopLevelProject().getBasedir().getAbsolutePath() );
+            MavenProject topLevelProject = findHighestParentProject(session.getTopLevelProject());
+            defineProperty( rootLocationProperty, topLevelProject.getBasedir().getAbsolutePath() );
         }
+    }
+
+    private MavenProject findHighestParentProject(MavenProject project)
+    {
+        // search up model hierarchy to find the highest basedir location
+        MavenProject parent = project;
+        while (parent != null && parent.getParent() != null)
+        {
+            if (parent.getParent().getBasedir() == null)
+            {
+                // we've hit a parent that was resolved. Stop going higher up in the hierarchy
+                break;
+            }
+            parent = parent.getParent();
+        }
+        return parent;
     }
 
 }
