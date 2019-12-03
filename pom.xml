@@ -58,19 +58,15 @@
   </prerequisites>
 
   <scm>
-    <connection>scm:git:https://github.com/mojohaus/build-helper-maven-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mojohaus/build-helper-maven-plugin.git</developerConnection>
-    <url>https://github.com/mojohaus/build-helper-maven-plugin</url>
+    <connection>scm:git:https://github.com/pentaho/build-helper-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/pentaho/build-helper-maven-plugin.git</developerConnection>
+    <url>https://github.com/pentaho/build-helper-maven-plugin</url>
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/mojohaus/build-helper-maven-plugin/issues/</url>
+    <url>https://github.com/pentaho/build-helper-maven-plugin/issues/</url>
   </issueManagement>
-  <ciManagement>
-    <system>Travis-CI</system>
-    <url>https://travis-ci.org/mojohaus/build-helper-maven-plugin</url>
-  </ciManagement>
 
   <properties>
     <mavenVersion>3.0</mavenVersion>
