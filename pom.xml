@@ -64,13 +64,18 @@
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/pentaho/build-helper-maven-plugin/issues/</url>
+    <system>JIRA</system>
+    <url>http://jira.pentaho.com</url>
   </issueManagement>
+
 
   <properties>
     <mavenVersion>3.0</mavenVersion>
     <scmpublish.content>${project.build.directory}/staging/build-helper-maven-plugin</scmpublish.content>
+
+    <!-- No default repository URL deployments, these must be defined at build-time -->
+    <pentaho.public.release.repo />
+    <pentaho.public.snapshot.repo />
   </properties>
 
   <dependencies>
@@ -131,6 +136,19 @@
       </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>pentaho.public.release.repo</id>
+      <name>Pentaho Public Release Repository</name>
+      <url>${pentaho.public.release.repo}</url>
+    </repository>
+    <snapshotRepository>
+      <id>pentaho.public.snapshot.repo</id>
+      <name>Pentaho Public Snapshot Repository</name>
+      <url>${pentaho.public.snapshot.repo}</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <reporting>
     <plugins>

@@ -6,6 +6,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+import javax.annotation.Nonnull;
+
 /**
  * This goal will get the location of the root folder within a multi module build as a property {@code rootlocation}.
  *
@@ -48,11 +50,11 @@ public class RootLocationMojo
         }
     }
 
-    private MavenProject findHighestParentProject(MavenProject project)
+    private MavenProject findHighestParentProject(@Nonnull MavenProject project)
     {
         // search up model hierarchy to find the highest basedir location
         MavenProject parent = project;
-        while (parent != null && parent.getParent() != null)
+        while (parent.getParent() != null)
         {
             if (parent.getParent().getBasedir() == null)
             {
