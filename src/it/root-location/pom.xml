@@ -21,7 +21,7 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>root-location</goal>
+							<goal>rootlocation</goal>
 						</goals>
 					</execution>
 				</executions>

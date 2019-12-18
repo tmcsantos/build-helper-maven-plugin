@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
  * @author Karl Heinz Marbaise
  * @since 3.0.0
  */
-@Mojo( name = "root-location", defaultPhase = LifecyclePhase.VALIDATE, threadSafe = true )
+@Mojo( name = "rootlocation", defaultPhase = LifecyclePhase.VALIDATE, threadSafe = true )
 public class RootLocationMojo
     extends AbstractDefinePropertyMojo
 {
@@ -41,7 +41,7 @@ public class RootLocationMojo
     {
         if ( runOnlyAtExecutionRoot && !getProject().isExecutionRoot() )
         {
-            getLog().info( "Skip getting the root-location in this project because it's not the Execution Root" );
+            getLog().info( "Skip getting the rootlocation in this project because it's not the Execution Root" );
         }
         else
         {
