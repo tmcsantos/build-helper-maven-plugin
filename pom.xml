@@ -10,7 +10,7 @@
 
   <groupId>org.pentaho</groupId>
   <artifactId>build-helper-maven-plugin</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.1.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <url>http://www.mojohaus.org/build-helper-maven-plugin/</url>
 
@@ -58,9 +58,9 @@
   </prerequisites>
 
   <scm>
-    <connection>scm:git:https://github.com/pentaho/build-helper-maven-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/pentaho/build-helper-maven-plugin.git</developerConnection>
-    <url>https://github.com/pentaho/build-helper-maven-plugin</url>
+    <connection>scm:git:https://github.com/tmcsantos/build-helper-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/tmcsantos/build-helper-maven-plugin.git</developerConnection>
+    <url>https://github.com/tmcsantos/build-helper-maven-plugin</url>
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
@@ -72,6 +72,8 @@
   <properties>
     <mavenVersion>3.0</mavenVersion>
     <scmpublish.content>${project.build.directory}/staging/build-helper-maven-plugin</scmpublish.content>
+
+    <release.arguments>-DskipTests</release.arguments>
 
     <!-- No default repository URL deployments, these must be defined at build-time -->
     <pentaho.public.release.repo />
@@ -132,6 +134,21 @@
         <version>3.5</version>
         <configuration>
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <arguments>${release.arguments}</arguments>
+          <releaseProfiles>mojo-release</releaseProfiles>
         </configuration>
       </plugin>
     </plugins>
