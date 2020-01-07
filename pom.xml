@@ -10,7 +10,7 @@
 
   <groupId>org.pentaho</groupId>
   <artifactId>build-helper-maven-plugin</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.1.0</version>
   <packaging>maven-plugin</packaging>
   <url>http://www.mojohaus.org/build-helper-maven-plugin/</url>
 
@@ -61,7 +61,7 @@
     <connection>scm:git:https://github.com/pentaho/build-helper-maven-plugin.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/pentaho/build-helper-maven-plugin.git</developerConnection>
     <url>https://github.com/pentaho/build-helper-maven-plugin</url>
-    <tag>HEAD</tag>
+    <tag>build-helper-maven-plugin-3.1.0</tag>
   </scm>
   <issueManagement>
     <system>JIRA</system>
