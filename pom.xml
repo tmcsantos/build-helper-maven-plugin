@@ -8,9 +8,8 @@
     <version>40</version>
   </parent>
 
-  <groupId>org.pentaho</groupId>
   <artifactId>build-helper-maven-plugin</artifactId>
-  <version>3.1.1-SNAPSHOT</version>
+  <version>3.1.0-pentaho-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <url>http://www.mojohaus.org/build-helper-maven-plugin/</url>
 
